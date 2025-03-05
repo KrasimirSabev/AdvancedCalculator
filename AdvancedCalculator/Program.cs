@@ -8,130 +8,142 @@ namespace AdvancedCalculator
     {
         static void Main(string[] args)
         {
-            //figure out how to catch format exceptions, overflow and whatever else might come up
-            //move this into Blazer, that might be cool to try and do
-
-
             Console.WriteLine("Welcome to my calculator!");
 
             bool loop = true;
             while (loop)
             {
-                Console.WriteLine("Please enter the corresponding integer. You can do the following:\n 1. Basic Arithmetic.\n 2. Calculate the area of a 2D shape.\n 3. Basic Trigonometry."); //this can probably be turned into a method
-                int userChoice = Convert.ToInt32(Console.ReadLine());
-                switch (userChoice)
+
+                try
                 {
-                    case 1:
-                        Console.WriteLine("Choose an operation based on its first letter e.g. `a` for addition, `m` for multiplication, etc.");
-                        string basicOp = Console.ReadLine();
-                        if (basicOp.ToLower().Equals("a"))
-                        {
-                            double result = Addition();
-                            Console.WriteLine($"The result is: {result}"); //I'm pretty sure that this can be optimised so I don't have to repeat this line so many times...
-                        }
-                        else if (basicOp.ToLower().Equals("s"))
-                        {
-                            double result = Subtraction();
-                            Console.WriteLine($"The result is: {result}");
-                        }
-                        else if (basicOp.ToLower().Equals("m"))
-                        {
-                            double result = Multiplication();
-                            Console.WriteLine($"The result is: {result}");
-                        }
-                        else if (basicOp.ToLower().Equals("d"))
-                        {
-                            double result = Division();
-                            Console.WriteLine($"The result is: {result}");
-                        }
-                        else if (basicOp.ToLower().Equals("e"))
-                        {
-                            double result = Exponent();
-                            Console.WriteLine($"The result is: {result}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Input.");
-                        }
-                        break;
-                    case 2:
-                        Console.WriteLine("Pick a number corresponding to the shape you want which perimeter or area you want to calculate:\n 1. Triangle,\n 2. Square,\n 3. Rectangle.");
-                        int shape = Convert.ToInt32(Console.ReadLine());
-                        
-                        Console.WriteLine("To calculate the area press `a`. To calculate the perimeter, press anything else.");
-                        string area = Console.ReadLine();
-                        switch (shape)
-                        {
-                            case 1:
-                                if (area.ToLower().Equals("a"))
-                                {
-                                    double result = AreaOfIsoscelesTriangle();
-                                    Console.WriteLine($"The result is: {result}");
-                                }
-                                else
-                                {
-                                    double result = PerimeterOfIsoscelesTriangle();
-                                    Console.WriteLine($"The result is: {result}");
-                                }
-                                break;
-                            case 2:
-                                if (area.ToLower().Equals("a"))
-                                {
-                                    double result = AreaOfSquare();
-                                    Console.WriteLine($"The result is: {result}");
-                                }
-                                else
-                                {
-                                    double result = PerimeterOfSquare();
-                                    Console.WriteLine($"The result is: {result}");
-                                }
-                                break;
-                            case 3:
-                                if (area.ToLower().Equals("a"))
-                                {
-                                    double result = AreaOfRectangle();
-                                    Console.WriteLine($"The result is: {result}");
-                                }
-                                else
-                                {
-                                    double result = PerimeterOfRectangle();
-                                    Console.WriteLine($"The result is: {result}");
-                                }
-                                break;
-                        }
-                        break;
-                    case 3:
-                        Console.WriteLine("Pick the corresponding number depending on the trigonometric function you want to calculate: \n 1.Sine \n 2.Cosine \n 3.Tangent \n 4.Cotangent");
-                        int function = Convert.ToInt32(Console.ReadLine());
-                        switch (function)
-                        {
-                            case 1:
-                                double resultSin = SineFunction();
-                                Console.WriteLine($"The result is: {resultSin}"); //this works but it doesn't tell you whether there are any solutions to such a function. 
-                                break;
-                            case 2:
-                                double resultCosine = CosineFunction();
-                                Console.WriteLine($"The result is: {resultCosine}");
-                                break;
-                            case 3:
-                                double resultTangent = TangentFunction();
-                                Console.WriteLine($"The result is: {resultTangent}");
-                                break;
-                            case 4:
-                                double resultCotangent = CotangentFunction();
-                                Console.WriteLine($"The result is: {resultCotangent}");
-                                break;
-                            default:
-                                Console.WriteLine("Please enter a valid input.");
-                                break;
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("Please enter a number corresponding to the action you wish to do.");
-                        break;
+                    Console.WriteLine("Please enter the corresponding integer. You can do the following:\n 1. Basic Arithmetic.\n 2. Calculate the area of a 2D shape.\n 3. Basic Trigonometry."); //this can probably be turned into a method
+                    int userChoice = Convert.ToInt32(Console.ReadLine());
+                    switch (userChoice)
+                    {
+                        case 1:
+                            Console.WriteLine("Choose an operation based on its first letter e.g. `a` for addition, `m` for multiplication, etc.");
+                            string basicOp = Console.ReadLine();
+                            if (basicOp.ToLower().Equals("a"))
+                            {
+                                double result = Addition();
+                                Console.WriteLine($"The result is: {result}"); //I'm pretty sure that this can be optimised so I don't have to repeat this line so many times...
+                            }
+                            else if (basicOp.ToLower().Equals("s"))
+                            {
+                                double result = Subtraction();
+                                Console.WriteLine($"The result is: {result}");
+                            }
+                            else if (basicOp.ToLower().Equals("m"))
+                            {
+                                double result = Multiplication();
+                                Console.WriteLine($"The result is: {result}");
+                            }
+                            else if (basicOp.ToLower().Equals("d"))
+                            {
+                                double result = Division();
+                                Console.WriteLine($"The result is: {result}");
+                            }
+                            else if (basicOp.ToLower().Equals("e"))
+                            {
+                                double result = Exponent();
+                                Console.WriteLine($"The result is: {result}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid Input.");
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("Pick a number corresponding to the shape you want which perimeter or area you want to calculate:\n 1. Triangle,\n 2. Square,\n 3. Rectangle.");
+                            int shape = Convert.ToInt32(Console.ReadLine());
+
+                            Console.WriteLine("To calculate the area press `a`. To calculate the perimeter, press anything else.");
+                            string area = Console.ReadLine();
+                            switch (shape)
+                            {
+                                case 1:
+                                    if (area.ToLower().Equals("a"))
+                                    {
+                                        double result = AreaOfIsoscelesTriangle();
+                                        Console.WriteLine($"The result is: {result}");
+                                    }
+                                    else
+                                    {
+                                        double result = PerimeterOfIsoscelesTriangle();
+                                        Console.WriteLine($"The result is: {result}");
+                                    }
+                                    break;
+                                case 2:
+                                    if (area.ToLower().Equals("a"))
+                                    {
+                                        double result = AreaOfSquare();
+                                        Console.WriteLine($"The result is: {result}");
+                                    }
+                                    else
+                                    {
+                                        double result = PerimeterOfSquare();
+                                        Console.WriteLine($"The result is: {result}");
+                                    }
+                                    break;
+                                case 3:
+                                    if (area.ToLower().Equals("a"))
+                                    {
+                                        double result = AreaOfRectangle();
+                                        Console.WriteLine($"The result is: {result}");
+                                    }
+                                    else
+                                    {
+                                        double result = PerimeterOfRectangle();
+                                        Console.WriteLine($"The result is: {result}");
+                                    }
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("Pick the corresponding number depending on the trigonometric function you want to calculate: \n 1.Sine \n 2.Cosine \n 3.Tangent \n 4.Cotangent");
+                            int function = Convert.ToInt32(Console.ReadLine());
+                            switch (function)
+                            {
+                                case 1:
+                                    double resultSin = SineFunction();
+                                    Console.WriteLine($"The result is: {resultSin}"); //this works but it doesn't tell you whether there are any solutions to such a function. 
+                                    break;
+                                case 2:
+                                    double resultCosine = CosineFunction();
+                                    Console.WriteLine($"The result is: {resultCosine}");
+                                    break;
+                                case 3:
+                                    double resultTangent = TangentFunction();
+                                    Console.WriteLine($"The result is: {resultTangent}");
+                                    break;
+                                case 4:
+                                    double resultCotangent = CotangentFunction();
+                                    Console.WriteLine($"The result is: {resultCotangent}");
+                                    break;
+                                default:
+                                    Console.WriteLine("Please enter a valid input.");
+                                    break;
+                            }
+                            break;
+                        default:
+                            Console.WriteLine("Please enter a number corresponding to the action you wish to do.");
+                            break;
+                    }
                 }
+                catch(FormatException)
+                {
+                    Console.WriteLine("This is not a valid input. Please try again.");
+                }
+                catch(OverflowException)
+                {
+                    Console.WriteLine("The number you entered is too large. Please try again with a smaller number.");
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                };
             }
-        }
+        }    
        
         //Read Input
         public static double ReadNum(string s) //turns string to double
@@ -235,6 +247,7 @@ namespace AdvancedCalculator
             angle = ReadNum("Enter a specified angle to determine the cosine function (in radians) of it: ");
 
             return Math.Cos(angle);
+            
         }
 
         static double TangentFunction(double angle = default)
@@ -250,8 +263,5 @@ namespace AdvancedCalculator
 
             return Math.Cos(angle) / Math.Sin(angle);
         }
-
-
     }
-
 }
